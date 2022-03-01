@@ -4,6 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import Product from './screens/product';
 import ProductDetail from './screens/productDetail';
 
+import { colors } from './components/theme/theme';
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -16,12 +18,23 @@ export default function App() {
           component={Product}
           options={{ headerShown: false }}
         />
-
+        
         <Stack.Screen
           name="ProductDetail"
           component={ProductDetail}
-          options={{ headerShown: true }}
+          options={{ 
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: colors().default,
+            },
+            headerTintColor: colors().white,
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },            
+          }}
         />
+     
 
       </Stack.Navigator>
     </NavigationContainer>

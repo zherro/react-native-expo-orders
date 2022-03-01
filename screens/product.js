@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TouchableOpacity, View } from "react-native-web";
+import { TouchableOpacity, View } from "react-native";
 
 import HeaderWithSearch from "../components/header/header-with-search";
 import CardPrice from "../components/card/card-price";
@@ -10,7 +10,7 @@ import dataMock from "../mock/productDataMock"
 export default function Product( {navigation} ) {
 
     const goToDetail = (item) => {
-        navigation.navigate('ProductDetail');
+        navigation.navigate('ProductDetail', {item: item});
     };
 
     return (
@@ -25,10 +25,10 @@ export default function Product( {navigation} ) {
                 {
                     dataMock.map((item, index) => {
                         return <TouchableOpacity
+                            key={index}
                             onPress={() => goToDetail(item)}
                         >
                             <CardPrice
-                                key={index}
                                 item={item}
                                 options={{
                                     width: 180,

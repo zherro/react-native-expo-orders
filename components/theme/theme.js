@@ -5,6 +5,7 @@ export function colors() {
     return {
         white: "#FAFAFA",
         gray: "#DDD",
+        default: "#33907C",
     };
 }
 
