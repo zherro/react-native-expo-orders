@@ -23,8 +23,8 @@ export default function Product() {
                                 key={index}
                                 item={item}
                                 options={{
-                                    width: 150,
-                                    maxWidth: 150
+                                    width: 180,
+                                    maxWidth: 180
                                 }}
                             />
                     })

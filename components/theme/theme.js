@@ -19,6 +19,7 @@ export function color() {
         bgDefault: { backgroundColor: "#33907C", },
         bgBlack: { backgroundColor: "#777777", }, 
         bgGray: { backgroundColor: "#DDD", },
+        bgDanger: { backgroundColor: "#FF6F91"}
     });
 }
 

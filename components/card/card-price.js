@@ -9,7 +9,7 @@ export default function CardPrice ({ item, options }) {
             style={[
                 metrics().marginVertical,
                 {width: options?.width ? options?.width : 200 },
-                style.card
+                styles.card
             ]}
         >
             <View style={metrics().padding}>
@@ -26,7 +26,13 @@ export default function CardPrice ({ item, options }) {
                         metrics().marginTop,
                     ]}
                 >
-                    <Text>{ item?.available ? 'A' : 'U' }</Text>
+                    <Text style={[
+                            item?.available ? color().bgDefault : color().bgDanger,
+                            color().white,
+                            styles.status
+                        ]}>
+                        { item?.available ? 'A' : 'U' }
+                    </Text>
                     <Text
                         style={[
                             color().default,
@@ -39,11 +45,17 @@ export default function CardPrice ({ item, options }) {
     );
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     card: {
-        borderStyle: 'solid',
+        borderStyle: "solid",
         borderWidth: 1,
         borderColor: colors().gray,
         borderRadius: 10
+    },
+    status: {
+        borderRadius: "50%",
+        width: "1.25em",
+        height: "1.25em",
+        textAlign: "center"
     }
 });
