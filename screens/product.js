@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View } from "react-native-web";
+import { TouchableOpacity, View } from "react-native-web";
 
 import HeaderWithSearch from "../components/header/header-with-search";
 import CardPrice from "../components/card/card-price";
@@ -7,7 +7,12 @@ import { flex, metrics } from "../components/theme/theme";
 
 import dataMock from "../mock/productDataMock"
 
-export default function Product() {
+export default function Product( {navigation} ) {
+
+    const goToDetail = (item) => {
+        navigation.navigate('ProductDetail');
+    };
+
     return (
         <View>
             <HeaderWithSearch />
@@ -19,7 +24,10 @@ export default function Product() {
             ]} >
                 {
                     dataMock.map((item, index) => {
-                        return <CardPrice
+                        return <TouchableOpacity
+                            onPress={() => goToDetail(item)}
+                        >
+                            <CardPrice
                                 key={index}
                                 item={item}
                                 options={{
@@ -27,6 +35,7 @@ export default function Product() {
                                     maxWidth: 180
                                 }}
                             />
+                        </TouchableOpacity>
                     })
                 }
             </View>
