@@ -159,6 +159,6 @@ const styles = StyleSheet.create({
     message: {
         color: colors.white,
         paddingBottom: 15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     }
 });
