@@ -3,10 +3,15 @@ import { StyleSheet } from "react-native";
 
 const space = '15px';
 
-const theme = StyleSheet.create({
+export const colors = {
     white: "#FAFAFA",
     gray: "#DDD",
-    default: "#33907C",
+    default: "#33907C",    
+    danger: "#FF6F91",
+}
+
+const theme = StyleSheet.create({
+
     textWhite: { color: "#FAFAFA", },
     textDefault: { color: "#33907C", },
     textBlack: { color: "#777777", },
@@ -34,6 +39,9 @@ const theme = StyleSheet.create({
     },
     justifyCenter: {
         justifyContent: 'center',
+    },
+    contentCenter: {
+        alignItems: 'center',
     },
     wrap: {
         flexWrap: 'wrap'
