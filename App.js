@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import Product from './screens/product';
 import ProductDetail from './screens/productDetail';
 import { colors } from './components/theme/theme-style';
+import Login from './screens/login';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,6 +12,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        
+
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
 
         <Stack.Screen
           name="Product"

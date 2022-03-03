@@ -53,6 +53,9 @@ const flex = StyleSheet.create({
     justifyCenter: {
         justifyContent: 'center'
     },
+    contentCenter: {
+        alignItems: 'center'
+    },
     wrap: {
         flexWrap: 'wrap'
     }

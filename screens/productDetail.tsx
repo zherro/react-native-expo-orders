@@ -6,8 +6,6 @@ export default function ProductDetail( { navigation, route } ) {
 
     const { product } = route.params;
 
-    console.table(route)
-
     useEffect(() => {
         navigation.setOptions({ title: product.title });
     }, [product]);
