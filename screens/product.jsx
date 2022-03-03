@@ -6,8 +6,14 @@ import CardPrice from "../components/card/card-price";
 import { flex, metrics } from "../components/theme/theme";
 
 import dataMock from "../mock/productDataMock"
+import { TouchableOpacity } from "react-native";
 
-export default function Product() {
+export default function Product( { navigation } ) {
+
+    const gotToDetail = ( item ) => {
+        navigation.navigate('ProductDetail', {product: item});
+    }
+
     return (
         <View>
             <HeaderWithSearch />
@@ -19,14 +25,18 @@ export default function Product() {
             ]} >
                 {
                     dataMock.map((item, index) => {
-                        return <CardPrice
-                                key={index}
+                        return <TouchableOpacity
+                            key={index}
+                            onPress={() => gotToDetail(item)}
+                        >
+                            <CardPrice
                                 item={item}
                                 options={{
                                     width: 180,
                                     maxWidth: 180
                                 }}
                             />
+                        </TouchableOpacity>
                     })
                 }
             </View>

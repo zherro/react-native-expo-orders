@@ -8,7 +8,7 @@ export default [
     {        
         image: '',
         title: 'Fruit',
-        price: 10,
+        price: 11,
         available: true,
     },
     {        
