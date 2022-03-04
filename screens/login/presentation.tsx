@@ -42,8 +42,8 @@ const Form = ({
                 >
                     <Formik
                         initialValues={{
-                            user: '',
-                            password: '',
+                            user: 'eve.holt@reqres.in',
+                            password: 'cityslicka',
                         }}
                         onSubmit={ ( values ) => submitAction(values) }
                         validationSchema={FormSchema}
