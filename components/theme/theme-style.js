@@ -7,6 +7,8 @@ export const colors = {
     white: "#FAFAFA",
     gray: "#DDD",
     default: "#33907C",
+    black: "#000000",
+    danger: "#FF6F91",
 }
 
 export const color = StyleSheet.create({
