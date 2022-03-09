@@ -1,7 +1,7 @@
 import React from "react";
 import LoginView from "./presentation";
 
-export default function Login() {
+export default function Login( { navigation } ) {
 
     const submitForm = ( values ) =>  {
         console.table(values);
@@ -20,7 +20,7 @@ export default function Login() {
                 email: values.user,
                 password: values.password
             })
-          });
+          }).then( response => response.status == 200 && navigation.navigate('Product'));
     }
 
     return (
