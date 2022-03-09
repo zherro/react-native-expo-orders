@@ -1,11 +1,14 @@
-import * as React from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TextInput, SafeAreaView } from "react-native";
 
 import BtnOpacity from "../button/btn-opacity";
 import { color, metrics, flex, text } from "../theme/theme";
 
 export default function HeaderWithSearch() {
-    return (<>
+
+    const [searchText, onChangeSearchText] = useState('');
+
+    return (<SafeAreaView>
         <View
             style={[
                 metrics().padding,
@@ -38,7 +41,8 @@ export default function HeaderWithSearch() {
                         metrics().marginTop,
                         styles.inputSearch
                     ]}
-                    value={'Search'} />
+                    onChangeText={onChangeSearchText}
+                    value={searchText} />
             </View>
 
             <View
@@ -53,7 +57,7 @@ export default function HeaderWithSearch() {
                 <BtnOpacity sTitle="Category" nWidth={80} />
             </View>
         </View>
-    </>);
+    </SafeAreaView>);
 }
 
 const styles = StyleSheet.create({
