@@ -1,14 +1,13 @@
 import * as React from "react";
-import { View } from "react-native-web";
+import { View, TouchableOpacity } from "react-native";
 
 import HeaderWithSearch from "../components/header/header-with-search";
 import CardPrice from "../components/card/card-price";
 import { flex, metrics } from "../components/theme/theme";
 
-import dataMock from "../mock/productDataMock"
-import { TouchableOpacity } from "react-native";
+import dataMock from "../mock/productDataMock";
 
-export default function Product( { navigation } ) {
+export default function Product( ) {
 
     const gotToDetail = ( item ) => {
         navigation.navigate('ProductDetail', {product: item});

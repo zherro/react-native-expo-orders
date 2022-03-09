@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { color, colors, flex, metrics } from '../theme/theme';
@@ -36,7 +36,7 @@ export default function CardPrice ({ item, options }) {
                     <Text
                         style={[
                             color().default,
-                            {fontWeight: 500}
+                            {fontWeight: "500"}
                         ]}
                     >R$ { item?.price }</Text>
                 </View>
@@ -53,9 +53,9 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     status: {
-        borderRadius: "50%",
-        width: "1.25em",
-        height: "1.25em",
+        borderRadius: 50,
+        width: 14,
+        height: 14,
         textAlign: "center"
     }
 });

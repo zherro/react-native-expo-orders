@@ -24,7 +24,7 @@ export function color() {
 }
 
 export function metrics() {
-    let space = '15px';
+    let space = 15;
 
     return StyleSheet.create({
         marginVertical : {
