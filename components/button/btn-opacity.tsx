@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
     btn: {
         borderColor: colors().white ,
         borderStyle: 'solid',
-        borderWidth: '1px',
-        padding: '4px',
-        paddingHorizontal: '8px',
+        borderWidth: 1,
+        padding: 4,
+        paddingHorizontal: 8,
         borderRadius: 15,
-        fontSize: '0.75em'
+        fontSize: 12
     },
 });

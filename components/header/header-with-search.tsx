@@ -59,12 +59,12 @@ export default function HeaderWithSearch() {
 const styles = StyleSheet.create({
     inputSearch: {
         borderRadius: 17,
-        fontSize: '1em',
-        padding: '8px'
+        fontSize: 14,
+        padding: 8
     },
 
     title: {
-        fontSize: '1.35em',
+        fontSize: 18,
         fontWeight: '500',
         width: '50%'
     },
