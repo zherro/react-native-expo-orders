@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet } from "react-native";
 
-const space = '15px';
+const space = 15;
 
 export const colors = {
     white: "#FAFAFA",

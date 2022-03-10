@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
     },
     status: {
         borderRadius: 5,
-        width: "1.25em",
-        height: "1.25em",
+        width: 16,
+        height: 16,
         textAlign: "center"
     }
 });
