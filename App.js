@@ -16,6 +16,12 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
 
+        <Stack.Screen
+            name="Product"
+            component={Product}
+            options={{ headerShown: false }}
+          />
+
 
           <Stack.Screen
             name="Login"
@@ -23,11 +29,6 @@ export default function App() {
             options={{ headerShown: false }}
           />
 
-          <Stack.Screen
-            name="Product"
-            component={Product}
-            options={{ headerShown: false }}
-          />
 
           <Stack.Screen
             name="ProductDetail"

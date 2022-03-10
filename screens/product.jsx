@@ -13,9 +13,13 @@ export default function Product( { navigation } ) {
         navigation.navigate('ProductDetail', {product: item});
     }
 
+    const searchAction = ( search ) => {
+        console.log( search )
+    }
+
     return (
         <View>
-            <HeaderWithSearch />
+            <HeaderWithSearch searchAction={searchAction} />
             <View style={[
                 metrics().padding,
                 flex().row,

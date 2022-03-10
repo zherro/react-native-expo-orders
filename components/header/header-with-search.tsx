@@ -1,51 +1,73 @@
-import * as React from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
+import { Icon } from "react-native-elements";
 
 import BtnOpacity from "../button/btn-opacity";
-import { color, metrics, flex, text } from "../theme/theme";
+import flex, { colors,  color, metrics, text  } from "../theme/theme-style";
 
-export default function HeaderWithSearch() {
+export default function HeaderWithSearch( { searchAction } ) {
+
+    const [search, updateSearchText] = useState('');
+
     return (<>
         <View
             style={[
-                metrics().padding,
-                color().bgDefault
+                metrics.padding,
+                color.bgDefault
             ]}
         >
 
-            <View style={flex().row}>
+            <View style={flex.row}>
                 <Text
                     style={[
-                        color().white,
+                        color.textWhite,
                         styles.title,
                     ]}
                 >Product</Text>
 
                 <Text
                     style={[
-                        color().white,
-                        text().alignEnd,
+                        color.textWhite,
+                        text.alignEnd,
                         styles.title,
                     ]}
                 >X</Text>
             </View>
 
-            <View>
-                <TextInput
-                    style={[
-                        color().bgWhite,
-                        color().black,
-                        metrics().marginTop,
-                        styles.inputSearch
-                    ]}
-                    value={'Search'} />
+            <View
+                style={[
+                    flex.row
+                ]}
+            >
+                <View>
+                    <TextInput
+                        style={[
+                            color.bgWhite,
+                            color.textBlack,
+                            metrics.marginTop,
+                            styles.inputSearch
+                        ]}
+                        onChangeText={updateSearchText}
+                        value={search} />
+                </View>
+                <View
+                    style={{ paddingTop: 7 }}
+                >
+                    <Icon
+                        size={16}
+                        raised
+                        name='search'
+                        type='font-awesome'
+                        color={ colors.default }
+                        onPress={() => searchAction( search )} />
+                </View>
             </View>
 
             <View
                 style={[
-                    flex().row,
-                    flex().justifyBetween,
-                    metrics().marginTop,
+                    flex.row,
+                    flex.justifyBetween,
+                    metrics.marginTop,
                 ]}
             >
                 <BtnOpacity sTitle="Short By" nWidth={80} />
