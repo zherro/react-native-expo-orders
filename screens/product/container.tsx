@@ -1,51 +1,47 @@
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
+import { getApi } from "../../api";
 import ProductView from "./product";
+
+const productURI = 'http://localhost:8080/products';
 
 export default function Product( { navigation } ) {
 
     const [data, setData] = useState([]);
     const [error, setError] = useState('');
+
+    const catchAction = () => setError('Unexpected error to retrieve products!');
+    const getDataAction = ( res ) => {
+        if(res.ok) {
+            return res.json()
+        } else {
+            catchAction();
+            setData([]);
+        }
+    };
+    const processDataAction = data => {
+        if(data) {
+            setData(data);
+            setError(null);
+        }
+    };
     
     const loadData = () => {
-        fetch(
-            'http://localhost:8080/products', { method: 'GET' }
+        getApi(
+            productURI,
+            getDataAction,
+            processDataAction,
+            catchAction
         )
-        .then( ( res ) => {
-            if(res.ok) {
-                return res.json()
-            } else {
-                setError('Unexpected error to retrieve products!');
-                setData([]);
-            }
-        } )
-        .then( data => {
-            if(data) {
-                setData(data);
-                setError(null);
-            }
-        })
-        .catch(() => setError('Unexpected error to retrieve products!'))
     }    
     
-    const filter = (searchText) => {
-        fetch(
-            `http://localhost:8080/products?query=${searchText}`, { method: 'GET' }
+    const filter = (searchText) => {        
+        getApi(
+            productURI + `?query=${searchText}`,
+            getDataAction,
+            processDataAction,
+            catchAction
         )
-        .then( ( res ) => {
-            if(res.ok) {
-                return res.json()
-            } else {
-                setError('Unexpected error to retrieve products!');
-                setData([]);
-            }
-        } )
-        .then( data => {
-            if(data) {
-                setData(data);
-                setError(null);
-            }
-        })
     }
 
     const searchAction = ( search ) => {
