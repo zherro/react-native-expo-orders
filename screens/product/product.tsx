@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 
 import HeaderWithSearch from "../../components/header/header-with-search";
 import CardPrice from "../../components/card/card-price";
 import flex, { metrics, color } from "../../components/theme/theme-style";
+import { initDB } from "../../src/database/database-connection";
 
 export default function ProductView({ navigation, data, reloadData, searchAction, error }) {
 
@@ -33,6 +34,10 @@ export default function ProductView({ navigation, data, reloadData, searchAction
             action: () => clearAction(),
         }
     ];
+
+    useEffect(() => {
+        initDB();
+    }, []);
 
     return (
         <View>

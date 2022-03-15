@@ -1,6 +1,6 @@
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+
 import React, { useEffect, useState } from "react";
-import { getApi } from "../../api";
+import { getApi } from "../../src/api";
 import ProductView from "./product";
 
 const productURI = 'http://localhost:8080/products';

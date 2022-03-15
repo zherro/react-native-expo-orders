@@ -1,10 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import flex, { color, metrics, text } from "../components/theme/theme-style";
+import flex, { color, colors, metrics, text } from "../components/theme/theme-style";
+import { addToCart } from "../src/database/order-repository";
 
-export default function ProductDetail( { navigation, route } ) {
+export default function ProductDetail({ navigation, route }) {
 
     const { product } = route.params;
+
+    const [submit, setSubmit] = useState(false);
+    const [error, setError] = useState(null);
+
+
+
+    const addProductToCart = () => {
+        setSubmit(true);
+        addToCart(product, addCallback);
+    }
+
+    const addCallback = (added) => {
+        if (added) {
+            setError(null);
+            setSubmit(false);
+        } else {
+            setError('Unexpecte erro when try add item!');
+            setSubmit(false);
+        }
+    };
 
     useEffect(() => {
         navigation.setOptions({ title: product.title });
@@ -41,15 +62,24 @@ export default function ProductDetail( { navigation, route } ) {
                     >R$ {product?.price}</Text>
                 </View>
             </View>
+            {
+                error
+                && <View>
+                    <Text style={color.textBlack}>ERROR: {error}</Text>
+                </View>
+            }
             <View
                 style={[
                     metrics.padding,
-                    metrics.marginVertical,                    
+                    metrics.marginVertical,
                     flex.row,
                     flex.justifyCenter,
                 ]}
             >
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => addProductToCart()}
+                    disabled={submit}
+                >
                     <Text
                         style={[
                             styles.btnAdd,
@@ -58,6 +88,29 @@ export default function ProductDetail( { navigation, route } ) {
                             text.alignCenter,
                         ]}
                     >Add to cart</Text>
+                </TouchableOpacity>
+            </View>
+            <View
+                style={[
+                    metrics.padding,
+                    metrics.marginVertical,
+                    flex.row,
+                    flex.justifyCenter,
+                ]}
+            >
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    disabled={submit}
+                >
+                    <Text
+                        style={[
+                            styles.btnAdd,
+                            color.bgWhite,
+                            color.textDefault,
+                            text.alignCenter,
+                            { borderColor: colors.default, borderWidth: 1, borderStyle: "solid" }
+                        ]}
+                    >Go Back</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -73,7 +126,7 @@ const styles = StyleSheet.create({
     },
     card: {
         height: 80,
-        backgroundColor: "#fff"        
+        backgroundColor: "#fff"
     },
     status: {
         borderRadius: 5,
