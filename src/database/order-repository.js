@@ -1,7 +1,6 @@
 import { DatabaseConnection } from "./database-connection";
 
-export const addToCart = (product, resultCallback) => {
-
+export const addToCart = (product, resultCallback, setCount) => {
 
     const db = DatabaseConnection.getConnection();
 
@@ -12,6 +11,21 @@ export const addToCart = (product, resultCallback) => {
             (tx, results) => {
                 console.log('Results', results.rowsAffected);
                 resultCallback(results.rowsAffected > 0);
+                countItemById(product.id, setCount);
+            }
+        );
+    });
+}
+
+export const countItemById = (id,  setResult) => {
+    const db = DatabaseConnection.getConnection();
+
+    db.transaction((tx) => {
+        tx.executeSql(
+            'SELECT cart_id FROM table_cart where id = ?',
+            [id],
+            (tx, results) => {
+                setResult(results.rows.length);
             }
         );
     });

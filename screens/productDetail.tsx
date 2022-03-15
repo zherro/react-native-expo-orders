@@ -9,12 +9,13 @@ export default function ProductDetail({ navigation, route }) {
 
     const [submit, setSubmit] = useState(false);
     const [error, setError] = useState(null);
+    const [qtd, setQtd] = useState(0);
 
 
 
     const addProductToCart = () => {
         setSubmit(true);
-        addToCart(product, addCallback);
+        addToCart(product, addCallback, setQtd);
     }
 
     const addCallback = (added) => {
@@ -65,7 +66,17 @@ export default function ProductDetail({ navigation, route }) {
             {
                 error
                 && <View>
-                    <Text style={color.textBlack}>ERROR: {error}</Text>
+                    <Text style={[color.textBlack, { textAlign: "center" }]}>
+                        ERROR: {error}
+                    </Text>
+                </View>
+            }
+            {
+                qtd > 0
+                && <View>
+                    <Text style={[color.textBlack, { textAlign: "center" }]}>
+                        Added {qtd} itens to cart.
+                    </Text>
                 </View>
             }
             <View
