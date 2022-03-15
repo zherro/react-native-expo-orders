@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput, useWindowDimensions } from "react-native";
 import { Icon } from "react-native-elements";
 
 import BtnOpacity from "../button/btn-opacity";
 import flex, { colors,  color, metrics, text  } from "../theme/theme-style";
 
-export default function HeaderWithSearch( { searchAction } ) {
+export default function HeaderWithSearch( { searchAction, title='' } ) {
 
     const [search, updateSearchText] = useState('');
+    const { height, width } = useWindowDimensions();
 
     return (<>
         <View
@@ -23,7 +24,7 @@ export default function HeaderWithSearch( { searchAction } ) {
                         color.textWhite,
                         styles.title,
                     ]}
-                >Product</Text>
+                >{ title }</Text>
 
                 <Text
                     style={[
@@ -45,7 +46,8 @@ export default function HeaderWithSearch( { searchAction } ) {
                             color.bgWhite,
                             color.textBlack,
                             metrics.marginTop,
-                            styles.inputSearch
+                            styles.inputSearch,
+                            {width: width - 30 - 40}
                         ]}
                         onChangeText={updateSearchText}
                         value={search} />

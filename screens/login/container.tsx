@@ -14,7 +14,9 @@ export default function Login( { navigation } ) {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'token': 'klkahsdkladklakldhasdasd',
+                'teste': 'klkahsdkladklakldhasdasd',
             },
             body: JSON.stringify({
                 email: values.user,

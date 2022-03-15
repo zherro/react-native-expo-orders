@@ -11,7 +11,7 @@ export default function TextCenter({
     return (
         <Text
             style={[
-                color.textWhite,
+                {color: colorText},
                 { fontSize: fontSize },
                 { marginTop: marginTop},
                 { textAlign: "center"},

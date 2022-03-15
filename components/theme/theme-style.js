@@ -46,6 +46,9 @@ const flex = StyleSheet.create({
     row: {
         flexDirection: "row"
     },
+    column: {
+        flexDirection: "column"
+    },
     justifyBetween: {
         justifyContent: 'space-between',
     },
