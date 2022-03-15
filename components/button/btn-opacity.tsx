@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import { color, colors } from '../theme/theme'
+import { color, colors } from '../theme/theme-style'
 
 export default function BtnOpacity({ sTitle, nWidth }) {
     return (
         <TouchableOpacity style={[ styles.btn ]}>
             <Text
                 style={[
-                    color().white,
+                    color.textWhite,
                     { width: nWidth ? nWidth : 60 }
                 ]}
             >
@@ -20,7 +20,7 @@ export default function BtnOpacity({ sTitle, nWidth }) {
 
 const styles = StyleSheet.create({
     btn: {
-        borderColor: colors().white ,
+        borderColor: colors.white ,
         borderStyle: 'solid',
         borderWidth: 1,
         padding: 4,

@@ -3,7 +3,7 @@ import { View, TouchableOpacity } from "react-native";
 
 import HeaderWithSearch from "../../components/header/header-with-search";
 import CardPrice from "../../components/card/card-price";
-import { flex, metrics } from "../../components/theme/theme";
+import flex, { metrics } from "../../components/theme/theme-style";
 
 export default function ProductView( { navigation, data } ) {
 
@@ -19,10 +19,10 @@ export default function ProductView( { navigation, data } ) {
         <View>
             <HeaderWithSearch searchAction={searchAction} title={'Products'} />
             <View style={[
-                metrics().padding,
-                flex().row,
-                flex().wrap, 
-                flex().justifyAround,            
+                metrics.padding,
+                flex.row,
+                flex.wrap, 
+                flex.justifyAround,            
             ]} >
                 {
                     data?.map((item, index) => {
