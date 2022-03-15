@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
-import Product from './screens/product';
 import ProductDetail from './screens/productDetail';
 import { colors } from './components/theme/theme-style';
 
@@ -12,6 +11,7 @@ import SuccessView from './screens/message/message';
 import ClientList from './screens/client/list';
 import ClientDetail from './screens/client/detail';
 import Order from './screens/orders/orders';
+import TabNavigator from './screens/navigation/tabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +20,12 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
+
+          <Stack.Screen
+            name="TabNavigator"
+            component={TabNavigator}
+            options={{ headerShown: false }}
+          />
 
           <Stack.Screen
             name="Order"
@@ -79,14 +85,16 @@ export default function App() {
           />
 
           <Stack.Screen
-            name="Product"
-            component={Product}
+            name="Login"
+            component={Login}
             options={{ headerShown: false }}
           />
 
+
+
           <Stack.Screen
-            name="Login"
-            component={Login}
+            name="SuccessView"
+            component={SuccessView}
             options={{ headerShown: false }}
           />
 
@@ -104,13 +112,6 @@ export default function App() {
                 fontWeight: 'bold'
               }
             }}
-
-          />
-
-          <Stack.Screen
-            name="SuccessView"
-            component={SuccessView}
-            options={{ headerShown: false }}
           />
 
         </Stack.Navigator>
