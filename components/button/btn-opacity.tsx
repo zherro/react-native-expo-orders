@@ -1,26 +1,33 @@
 import * as React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Icon } from 'react-native-elements/dist/icons/Icon';
 
-import { color, colors } from '../theme/theme-style'
+import flex, { color, colors } from '../theme/theme-style'
 
-export default function BtnOpacity({ sTitle, nWidth }) {
+export default function BtnOpacity({ sTitle, nWidth, action, icon = '' }) {
     return (
-        <TouchableOpacity style={[ styles.btn ]}>
-            <Text
-                style={[
-                    color.textWhite,
-                    { width: nWidth ? nWidth : 60 }
-                ]}
-            >
-                { sTitle }
-            </Text>
+        <TouchableOpacity style={[styles.btn]} onPress={action} >
+            <View style={[flex.row]}>
+                <Text
+                    style={[
+                        color.textWhite,
+                        { width: nWidth ? nWidth : 60 }
+                    ]}
+                >
+                    {sTitle}
+                </Text>
+                {
+                    icon &&
+                    <Icon name={icon} color="white" />
+                }
+            </View>
         </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
     btn: {
-        borderColor: colors.white ,
+        borderColor: colors.white,
         borderStyle: 'solid',
         borderWidth: 1,
         padding: 4,
