@@ -1,41 +1,41 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import { color, colors, flex, metrics } from '../theme/theme';
+import flex, { color, colors, metrics } from '../theme/theme-style';
 
 export default function CardPrice ({ item, options }) {
     return (
         <View
             style={[
-                metrics().marginVertical,
+                metrics.marginVertical,
                 {width: options?.width ? options?.width : 200 },
                 styles.card
             ]}
         >
-            <View style={metrics().padding}>
+            <View style={metrics.padding}>
                 <Text
                     style={[
-                        color().black,
+                        color.textBlack,
                     ]}
                 >{ item?.title }</Text>
 
                 <View
                     style={[
-                        flex().row,
-                        flex().justifyBetween,
-                        metrics().marginTop,
+                        flex.row,
+                        flex.justifyBetween,
+                        metrics.marginTop,
                     ]}
                 >
                     <Text style={[
-                            item?.available ? color().bgDefault : color().bgDanger,
-                            color().white,
+                            item?.available ? color.bgDefault : color.bgDanger,
+                            color.textWhite,
                             styles.status
                         ]}>
                         { item?.available ? 'A' : 'U' }
                     </Text>
                     <Text
                         style={[
-                            color().default,
+                            color.textDefault,
                             {fontWeight: "500"}
                         ]}
                     >R$ { item?.price }</Text>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     card: {
         borderStyle: "solid",
         borderWidth: 1,
-        borderColor: colors().gray,
+        borderColor: colors.gray,
         borderRadius: 10
     },
     status: {

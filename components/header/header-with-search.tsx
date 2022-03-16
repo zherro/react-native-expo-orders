@@ -72,9 +72,7 @@ export default function HeaderWithSearch( { searchAction, title='' } ) {
                     metrics.marginTop,
                 ]}
             >
-                <BtnOpacity sTitle="Short By" nWidth={80} />
-                <BtnOpacity sTitle="Location" nWidth={80} />
-                <BtnOpacity sTitle="Category" nWidth={80} />
+                <BtnOpacity sTitle="Short By" nWidth={80} icon="sort" action={() => {}} />
             </View>
         </View>
     </>);
