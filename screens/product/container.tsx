@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import { getApi } from "../../src/api";
 import ProductView from "./product";
 
-const productURI = 'http://localhost:8080/products';
-
 export default function Product( { navigation } ) {
 
     const [data, setData] = useState(null);
@@ -32,7 +30,7 @@ export default function Product( { navigation } ) {
     
     const loadData = () => {
         getApi(
-            productURI,
+            'products',
             getDataAction,
             processDataAction,
             catchAction
@@ -41,7 +39,7 @@ export default function Product( { navigation } ) {
 
     const filterData = (searchText) => {        
         getApi(
-            productURI + `?query=${searchText}`,
+            `products?query=${searchText}`,
             getDataAction,
             processDataAction,
             catchAction

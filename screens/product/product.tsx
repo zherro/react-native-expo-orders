@@ -44,6 +44,10 @@ export default function ProductView({
         initDB();
     }, [])
 
+    const ErrorText = () => {
+        return error ? <View><Text>{error}</Text></View> : null
+    }
+
     return (
         <View>
             <HeaderWithSearch
@@ -61,10 +65,7 @@ export default function ProductView({
             ]} >
 
                 {
-                    error &&
-                        <View>
-                            <Text>{error}</Text>
-                        </View>
+                   ErrorText()  
                 }
 
                 {

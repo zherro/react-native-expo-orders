@@ -1,10 +1,8 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
-import { FAB } from "react-native-elements";
 import FabButton from "../../../components/button/fab-btn";
 import HeaderWithSearch from "../../../components/header/header-with-search";
 import FlatListItem from "../../../components/list/flat-item";
-import { flex } from "../../../components/theme/theme";
 import { colors } from "../../../components/theme/theme-style";
 
 type List2Data = {
