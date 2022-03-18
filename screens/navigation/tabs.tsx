@@ -4,6 +4,8 @@ import { Icon } from 'react-native-elements';
 import { colors } from "../../components/theme/theme-style";
 import Product from "../product";
 import ClientList from "../client/list";
+import OrderList from "../orders/list";
+import CartList from "../orders/list";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,6 +22,10 @@ const TabNavigator = () => {
             if (route.name == 'ClientList') {
                 iconName = 'users';
             }
+            
+            if (route.name == 'CartList') {
+                iconName = 'shopping-cart';
+            }
 
             return <Icon type='font-awesome' name={iconName} color={color} size={size} />
         },
@@ -33,6 +39,14 @@ const TabNavigator = () => {
                 name="Product"
                 component={Product}
                 options={{ headerShown: false }}
+            />
+            <Tab.Screen
+                name="CartList"
+                component={CartList}
+                options={{
+                    headerShown: false,
+                    title: 'Cart',
+                }}
             />
             <Tab.Screen
                 name="ClientList"

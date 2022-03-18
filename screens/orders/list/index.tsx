@@ -1,3 +1,3 @@
-import OrderList from "./container";
+import CartList from "./container";
 
-export default OrderList;
+export default CartList;

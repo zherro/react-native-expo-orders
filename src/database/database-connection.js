@@ -11,8 +11,6 @@ export const initDB = ()  => {
 const createTableCart = () => {
     const db = DatabaseConnection.getConnection();
 
-    console.log('create DB');
-
     db.transaction(function (txn) {
         txn.executeSql(
             "SELECT name FROM sqlite_master WHERE type='table' AND name='table_cart' ",
@@ -20,10 +18,11 @@ const createTableCart = () => {
             function (tx, res) {
                 if(res.rows.length == 0) {
                     tx.executeSql(
-                        "CREATE TABLE IF NOT EXISTS table_cart (cart_id INTEGER PRIMARY KEY AUTOINCREMENT, title vachar(100) ) "
+                        "CREATE TABLE IF NOT EXISTS table_cart (cart_id INTEGER PRIMARY KEY AUTOINCREMENT, title vachar(100), id INT(10), price double, available boolean) "
                     )
                 }
             }
         );
     });
+
 }

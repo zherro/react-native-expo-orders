@@ -8,14 +8,17 @@ export default function BtnOpacity({
     sTitle,
     nWidth,
     icon = '',
-    action
+    action,
+    color=colors.white,
+    centerText=false
 }) {
     return (
-        <TouchableOpacity style={[styles.btn]} onPress={action} >
+        <TouchableOpacity style={[styles.btn, {borderColor: color}]} onPress={action} >
             <View style={[ flex.row ]}>
                 <Text
                     style={[
-                        color.textWhite,
+                        { textAlign: centerText ? "center" : "left" },
+                        { color: color },
                         { width: nWidth ? nWidth : 60 }
                     ]}
                 >
@@ -32,7 +35,6 @@ export default function BtnOpacity({
 
 const styles = StyleSheet.create({
     btn: {
-        borderColor: colors.white,
         borderStyle: 'solid',
         borderWidth: 1,
         padding: 4,

@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator, StyleSheet } from "react-native";
+import { ActivityIndicator, StyleSheet, Text } from "react-native";
 import { Icon, Image, ListItem } from "react-native-elements";
 
 export default function FlatListItem({
@@ -8,6 +8,8 @@ export default function FlatListItem({
     useIcon=false,
     icon='user-circle-o',
     imageSrc=null,
+    textAux1='',
+    textAux2=''
 }) {
     return (
         <ListItem bottomDivider>
@@ -32,9 +34,11 @@ export default function FlatListItem({
             </ListItem.Content>
             <ListItem.Content right>
                 <ListItem.Title right style={{ color: 'green' }}>
-                    11:00 am
+                    <Text>{ textAux1 }</Text>
                 </ListItem.Title>
-                <ListItem.Subtitle right>12:00 am</ListItem.Subtitle>
+                <ListItem.Subtitle right>
+                    <Text>{ textAux2 }</Text>
+                </ListItem.Subtitle>
             </ListItem.Content>
         </ListItem>
     );
