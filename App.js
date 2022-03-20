@@ -17,6 +17,7 @@ import { StatusBar } from 'react-native';
 import Resources from './src/resources';
 import CameraResource from './src/resources/camera/camera.resource';
 import GPSResource from './src/resources/gps';
+import PushResource from './src/resources/notification';
 
 const Stack = createNativeStackNavigator();
 
@@ -123,6 +124,11 @@ export default function App() {
           <Stack.Screen
             name="GPSResource"
             component={GPSResource}
+          />
+
+          <Stack.Screen
+            name="PushResource"
+            component={PushResource}
           />
 
         </Stack.Navigator>

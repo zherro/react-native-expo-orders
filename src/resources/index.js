@@ -39,6 +39,19 @@ export default function Resources( { navigation } ) {
                     action={() => navigation.navigate('GPSResource') }
                 />
             </View>
+            <View
+                style={[
+                    metrics.marginVertical
+                ]}
+            >
+                <BtnOpacity
+                    sTitle={'View Notifications'}
+                    color={colors.default}
+                    nWidth={120}
+                    centerText={true}                    
+                    action={() => navigation.navigate('PushResource') }
+                />
+            </View>
         </View>
     );
 }

@@ -29,7 +29,8 @@
     "expo-sqlite": "~10.1.0",
     "expo-updates": "~0.11.6",
     "expo-camera": "~12.0.3",
-    "expo-location": "~13.0.4"
+    "expo-location": "~13.0.4",
+    "expo-notifications": "~0.13.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
