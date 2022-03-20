@@ -6,6 +6,7 @@ import Product from "../product";
 import ClientList from "../client/list";
 import OrderList from "../orders/list";
 import CartList from "../orders/list";
+import Resources from "../../src/resources";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,6 +26,10 @@ const TabNavigator = () => {
             
             if (route.name == 'CartList') {
                 iconName = 'shopping-cart';
+            }
+
+            if (route.name == 'Resources') {                
+                iconName = 'config';
             }
 
             return <Icon type='font-awesome' name={iconName} color={color} size={size} />
@@ -55,6 +60,10 @@ const TabNavigator = () => {
                     headerShown: false,
                     title: 'Client List',
                 }}
+            />
+            <Tab.Screen
+                name="Resources"
+                component={Resources}
             />
         </Tab.Navigator>
     );
