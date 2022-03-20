@@ -16,6 +16,7 @@ import TabNavigator from './screens/navigation/tabs';
 import { StatusBar } from 'react-native';
 import Resources from './src/resources';
 import CameraResource from './src/resources/camera/camera.resource';
+import GPSResource from './src/resources/gps';
 
 const Stack = createNativeStackNavigator();
 
@@ -117,7 +118,11 @@ export default function App() {
           <Stack.Screen
             name="CameraResource"
             component={CameraResource}
-            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="GPSResource"
+            component={GPSResource}
           />
 
         </Stack.Navigator>

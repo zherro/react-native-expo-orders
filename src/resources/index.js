@@ -35,7 +35,8 @@ export default function Resources( { navigation } ) {
                     sTitle={'Use GPS'}
                     color={colors.default}
                     nWidth={120}
-                    centerText={true}
+                    centerText={true}                    
+                    action={() => navigation.navigate('GPSResource') }
                 />
             </View>
         </View>
