@@ -1,6 +1,6 @@
 
-// const HOST_API = 'https://orders-api-curso.herokuapp.com/';
-const HOST_API = 'http://localhost:8080/';
+const HOST_API = 'https://orders-api-curso.herokuapp.com/';
+// const HOST_API = 'http://localhost:8080/';
 
 const buildUri = (uri) => {
     return `${HOST_API}${uri}`;

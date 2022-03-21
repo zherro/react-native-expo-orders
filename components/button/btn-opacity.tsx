@@ -25,8 +25,7 @@ export default function BtnOpacity({
                     {sTitle}
                 </Text>
                 {
-                    icon &&
-                    <Icon name={icon} color="white" />
+                    icon ? <Icon name={icon} color="white" /> : null
                 }
             </View>
         </TouchableOpacity>

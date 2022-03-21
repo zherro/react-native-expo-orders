@@ -6,7 +6,6 @@ import Product from "../product";
 import ClientList from "../client/list";
 import OrderList from "../orders/list";
 import CartList from "../orders/list";
-import Resources from "../../src/resources";
 
 const Tab = createBottomTabNavigator();
 
@@ -61,10 +60,10 @@ const TabNavigator = () => {
                     title: 'Client List',
                 }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="Resources"
                 component={Resources}
-            />
+            /> */}
         </Tab.Navigator>
     );
 }
