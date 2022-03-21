@@ -48,9 +48,17 @@ const TabNavigator = () => {
                 name="CartList"
                 component={CartList}
                 options={{
-                    headerShown: false,
                     title: 'Cart',
-                }}
+                    headerShown: true,
+                    headerStyle: {
+                      backgroundColor: colors.default
+                    },
+                    headerTintColor: colors.white,
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                      fontWeight: 'bold'
+                    }
+                  }}
             />
             <Tab.Screen
                 name="ClientList"

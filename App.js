@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -7,11 +8,11 @@ import { colors } from './components/theme/theme-style';
 import Login from './screens/login/container';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ClientForm from './screens/client/form';
-import SuccessView from './screens/message/message';
 import ClientDetail from './screens/client/detail';
 import Order from './screens/orders/orders';
 import TabNavigator from './screens/navigation/tabs';
 import { StatusBar } from 'react-native';
+import MessageView from './screens/message/message';
 
 const Stack = createNativeStackNavigator();
 
@@ -105,8 +106,8 @@ export default function App() {
             />
 
             <Stack.Screen
-              name="SuccessView"
-              component={SuccessView}
+              name="MessageView"
+              component={MessageView}
               options={{ headerShown: false }}
             />
 

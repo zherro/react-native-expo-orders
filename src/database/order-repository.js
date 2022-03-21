@@ -90,7 +90,7 @@ export const clearCart = ( resultCallback ) => {
     db.transaction((txn) => {
         txn.executeSql(
             "DELETE FROM tb_cart",
-            [cartId],
+            [],
             (tx, result) => resultCallback(result.rowsAffected > 0)
         )
     });

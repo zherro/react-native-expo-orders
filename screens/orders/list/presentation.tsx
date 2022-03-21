@@ -1,10 +1,13 @@
-import React from "react";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button } from "react-native-elements";
 import BtnOpacity from "../../../components/button/btn-opacity";
 import FlatListItem from "../../../components/list/flat-item";
-import flex, { colors, metrics } from "../../../components/theme/theme-style";
+import TextCenter from "../../../components/text/text-center";
+import flex, { colors, metrics, text } from "../../../components/theme/theme-style";
 
-export default function CarrListView({ data, submitOrder }) {
+export default function CarrListView({ reloadData, data, submitOrder, error, submited }) {
+
     return (
         <View
             style={[
@@ -27,6 +30,12 @@ export default function CarrListView({ data, submitOrder }) {
                             ))
                         }
                     </View>
+                    <View>
+                        {error ? <Text style={[text.alignCenter, metrics.marginVertical]}>{error}</Text> : null}
+                    </View>
+                    <View>
+                        {data?.length <= 0 ? <Text style={{ textAlign: "center" }} >{'Dont has itens in cart!'}</Text> : null}
+                    </View>
                     <View
                         style={[
                             flex.row,
@@ -34,13 +43,27 @@ export default function CarrListView({ data, submitOrder }) {
                             metrics.marginVertical,
                         ]}
                     >
-                        <BtnOpacity
-                            sTitle={'Submit'}
-                            nWidth={120}
-                            color={colors.default}
-                            centerText={true}
-                            action={() => submitOrder(data)}
-                        />
+                        {
+                            data?.length > 0 
+                                ? <BtnOpacity
+                                    sTitle={'Submit'}
+                                    nWidth={120}
+                                    color={colors.default}
+                                    centerText={true}
+                                    action={() => submitOrder(data)}
+                                />
+                                : <BtnOpacity
+                                sTitle={'Update Cart'}
+                                nWidth={120}
+                                color={colors.default}
+                                centerText={true}
+                                action={() => reloadData()}
+                            />
+                        }
+                        {
+                            !submited ? null : <Button type="clear" title="SENDING..." loading={true} style={{ marginTop: 15 }} />
+
+                        }
                     </View>
                 </View>
             </ScrollView>

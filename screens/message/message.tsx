@@ -2,15 +2,19 @@ import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import { color, colors } from "../../components/theme/theme-style";
 
-export default function SuccessView({
-    title = '',
-    msg = '',
-    btnTitle = 'Ok',
-    action,
-    type="success"
-}) {
+export default function MessageView({ navigation, route }) {
 
-    const messageType = type === "success" ? color.bgDefault : color.bgDanger
+    // title = '',
+    // msg = '',
+    // btnTitle = 'Ok',
+    // action,
+    // type="success"
+
+    const { props } = route.params;
+
+    console.log(props)
+
+    const messageType = props?.type === "success" ? color.bgDefault : color.bgDanger
 
     return (
         <View style={[
@@ -19,13 +23,13 @@ export default function SuccessView({
         ]} >
             <View style={[{ flex: 5, marginTop: 50 }]} >
                 {
-                    title &&
-                        <Text style={style.title}> {title} </Text>
+                    props?.title ?
+                        <Text style={style.title}> {props?.title} </Text> : null
                 }
-                <Text style={style.text}> {msg} </Text>
+                <Text style={style.text}> {props?.msg} </Text>
             </View>
             <View style={{ flex: 1 }}>
-                <Button title={btnTitle} onPress={action} />
+                <Button title={props?.btnTitle} onPress={props?.action} />
             </View>
         </View>
     );
