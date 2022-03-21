@@ -4,7 +4,7 @@ import { color, colors } from "../theme/theme-style";
 
 export default function TextCenter({
     text,
-    colorText=colors.white,
+    colorText=colors.black,
     marginTop=40,
     fontSize=18,
 }) {

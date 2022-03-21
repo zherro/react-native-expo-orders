@@ -11,22 +11,22 @@ export default function ProductDetail({ navigation, route }) {
 
     const [submited, setSubmited] = useState(false);
     const [error, setError] = useState(null);
-    const [cartStatus, setCartStatus] = useState(null);
+    const [added, addCallback] = useState({state: false, qtd: null});
 
     const addProductToCart = () => {
         setSubmited(true);
         addToCart(product, addCallback);
     }
 
-    const addCallback = (added, qtd) => {
-        if (added) {
+   useEffect(() => {
+        if (added?.state) {
             setSubmited(false);
             setError(null);
-            setCartStatus(qtd);
+            console.log('count item retrieve:' + added?.qtd)
         } else {
             setError('Unexpected result when attempt add item to cart! Sorry!!!');
         }
-    }
+    }, [added]);
 
     useEffect(() => {
         countCartItem(product.id, addCallback);
@@ -68,8 +68,8 @@ export default function ProductDetail({ navigation, route }) {
                 <View style={[flex.row, flex.justifyCenter]}>
                     {/* { submited && <Text>Adicionando item...</Text>} */}
                     {
-                        cartStatus != null && cartStatus != undefined
-                            ? <TextCenter text={`${cartStatus} added`} colorText={colors.black} />
+                        added?.qtd != null
+                            ? <Text>{`${added?.qtd} added`}</Text>
                             : <Button type="clear" loading={true} style={{marginTop: 15}} />
                     }
                 </View>
@@ -85,6 +85,7 @@ export default function ProductDetail({ navigation, route }) {
             >
                 <TouchableOpacity
                     onPress={() => addProductToCart()}
+                    disabled={submited}
                 >
                     <Text
                         style={[

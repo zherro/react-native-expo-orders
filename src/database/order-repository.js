@@ -6,17 +6,19 @@ export const addToCart = ( product, resultCallback ) => {
 
     db.transaction((txn) => {
         txn.executeSql(
-            "INSERT INTO table_cart ( id, title, price, available) VALUES ( ?, ?, ?, ?) ",
+            "INSERT INTO tb_cart ( id, title, price, available) VALUES ( ?, ?, ?, ?) ",
             [product.id, product.title, product.price, product.available],
             (tx, result) => {
                 txn.executeSql(
-                    "SELECT count(1) as qtd FROM table_cart WHERE id=?",
+                    "SELECT count(1) as qtd FROM tb_cart WHERE id=?",
                     [product.id],
                     (tx, count) => {                                
                         if(result.rowsAffected > 0) {
                             resultCallback(
-                                result.rowsAffected > 0,
-                                count.rows.item(0).qtd
+                                {
+                                    state: result.rowsAffected > 0,
+                                    qtd: count.rows.item(0).qtd
+                                }
                             )
                         }
                     }
@@ -26,21 +28,24 @@ export const addToCart = ( product, resultCallback ) => {
     });
 }
 
-export const countCartItem = async ( id, resultCallback) => {
+export const countCartItem = ( id, resultCallback) => {
 
     const db = DatabaseConnection.getConnection();
 
     db.transaction((txn) => {
         txn.executeSql(
-            "SELECT count(1) as qtd FROM table_cart WHERE id=?",
+            "SELECT count(1) as qtd FROM tb_cart WHERE id=?",
             [id],
             (tx, count) => {                              
                 resultCallback(
-                    true,
-                    count.rows.item(0).qtd
+                    {
+                        state: true,
+                        qtd: count.rows.item(0).qtd
+                    }
                 );
-                console.log(count.rows.item(0).qtd);
-            }
+                console.log("Qtd in cart: " + count.rows.item(0).qtd);
+            },
+            (__, err) => console.log(err)
         );
     });
 }
@@ -51,7 +56,7 @@ export const listCart = ( resultCallback ) => {
 
     db.transaction((txn) => {
         txn.executeSql(
-            "SELECT count(1) as qtd, id, title, price, available from  table_cart c group by id, title, price, available",
+            "SELECT count(1) as qtd, id, title, price, available from  tb_cart c group by id, title, price, available",
             [],
             (tx, result) => {
                 let temp = [];
@@ -70,7 +75,7 @@ export const deleteItem = ( cartId, resultCallback ) => {
 
     db.transaction((txn) => {
         txn.executeSql(
-            "DELETE FROM table_cart WHERE cart_id=?",
+            "DELETE FROM tb_cart WHERE cart_id=?",
             [cartId],
             (tx, result) => resultCallback(result.rowsAffected > 0)
         )
@@ -84,7 +89,7 @@ export const clearCart = ( resultCallback ) => {
 
     db.transaction((txn) => {
         txn.executeSql(
-            "DELETE FROM table_cart",
+            "DELETE FROM tb_cart",
             [cartId],
             (tx, result) => resultCallback(result.rowsAffected > 0)
         )
