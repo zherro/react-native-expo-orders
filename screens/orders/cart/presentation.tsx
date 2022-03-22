@@ -15,11 +15,6 @@ export default function CartView( { goToCart, goToOrder } ) {
                     size: 23,
                     color: 'white',
                 }}
-                linearGradientProps={{
-                    colors: ['#FF9800', '#F44336'],
-                    start: [1, 0],
-                    end: [0.2, 0],
-                }}
                 loading={false}
                 loadingProps={{ size: 'small', color: 'white' }}
                
@@ -39,11 +34,6 @@ export default function CartView( { goToCart, goToOrder } ) {
                     type: 'font-awesome',
                     size: 23,
                     color: 'white',
-                }}
-                linearGradientProps={{
-                    colors: ['#FF9800', '#F44336'],
-                    start: [1, 0],
-                    end: [0.2, 0],
                 }}
                 loading={false}
                 loadingProps={{ size: 'small', color: 'white' }}

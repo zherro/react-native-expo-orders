@@ -1,60 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { postApi } from "../../../src/api";
+import { getApi, postApi } from "../../../src/api";
 import { clearCart, listCart } from "../../../src/database/order-repository";
 import OrderListView from "./presentation";
 
 export default function OrderList( { navigation } ) {
 
-    const [data, setData] = useState([]);
-    const [error, setError] = useState(null);
-    const [submited, setSubmited] = useState(false);
+    const [data, setData] = useState(null);
+    const [error, setError] = useState('');
 
     const catchAction = () => {
-        setSubmited(false);
-        setError("ERROR: oh no! order not submited!")
-    }
+        setData([]);
+        setError('Unexpected error to retrive products!');
+    };
 
-    const getDataAction = async ( res ) => {
-        setSubmited(false);
+    const getDataAction = ( res ) => {
         if(res.ok) {
-            await processDataAction( await res.json());
+            return res.json();
         } else {
             catchAction();
         }        
-    };
-
-    const actionMessage = () => navigation.push('TabNavigator');
+    }; 
 
     const processDataAction = data => {
-
         if(data) {
+            setData(data);
             setError(null);
-
-            console.log(data)
-            let message = {
-                title: 'Order submited!',
-                msg: `Created order with id: ${data?.id}`,
-                btnTitle: 'GO TO HOME',
-                type: 'success',
-                action: actionMessage
-            };
-
-            clearCart((data) => {} );
-            navigation.push('MessageView', {props: message} );
         }
     }
-
-    const submitOrder = () => {
-        if(data?.length > 0) {
-            setSubmited(true);
-            postApi(
-                '/orders/submit',
-                data,
-                getDataAction,
-                catchAction
-            );
-        }
+    
+    const loadData = () => {
+        getApi(
+            'orders',
+            getDataAction,
+            processDataAction,
+            catchAction
+        );
     }
+
+    useEffect(() => {
+        loadData();
+    }, [])
 
     const reloadData = () => {
         listCart(setData);
@@ -67,8 +52,6 @@ export default function OrderList( { navigation } ) {
     return <OrderListView
         reloadData={reloadData}
         data={data}
-        submitOrder={submitOrder}
         error={error}
-        submited={submited}
     />;
 }

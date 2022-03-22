@@ -6,7 +6,7 @@ import FlatListItem from "../../../components/list/flat-item";
 import TextCenter from "../../../components/text/text-center";
 import flex, { colors, metrics, text } from "../../../components/theme/theme-style";
 
-export default function OrderListView({ reloadData, data, submitOrder, error, submited }) {
+export default function OrderListView({ reloadData, data, error }) {
 
     return (
         <View
@@ -18,13 +18,13 @@ export default function OrderListView({ reloadData, data, submitOrder, error, su
                 <View>
                     <View style={styles.list}>
                         {
-                            data.map((product, i) => (
+                            data?.map((order, i) => (
                                 <TouchableOpacity key={i} onPress={() => { }}>
                                     <FlatListItem
-                                        title={product.title}
-                                        subtitle={product.available}
-                                        textAux1={'$ ' + product.price}
-                                        textAux2={'Qtd: ' + product.qtd}
+                                        title={"Order Number: " + order.orderUser.id}
+                                        subtitle={"Created by: " + order.orderUser.user}
+                                        textAux1={'$ ' + order.orderUser.value}
+                                        textAux2={'Itens: ' + order.orderUser.qtd}
                                     />
                                 </TouchableOpacity>
                             ))
@@ -34,7 +34,7 @@ export default function OrderListView({ reloadData, data, submitOrder, error, su
                         {error ? <Text style={[text.alignCenter, metrics.marginVertical]}>{error}</Text> : null}
                     </View>
                     <View>
-                        {data?.length <= 0 ? <Text style={{ textAlign: "center" }} >{'Dont has itens in cart!'}</Text> : null}
+                        {data?.length <= 0 ? <Text style={{ textAlign: "center" }} >{'No orders registered!'}</Text> : null}
                     </View>
                     <View
                         style={[
@@ -45,24 +45,14 @@ export default function OrderListView({ reloadData, data, submitOrder, error, su
                     >
                         {
                             data?.length > 0 
-                                ? <BtnOpacity
-                                    sTitle={'Submit'}
-                                    nWidth={120}
-                                    color={colors.default}
-                                    centerText={true}
-                                    action={() => submitOrder(data)}
-                                />
+                                ? null
                                 : <BtnOpacity
-                                sTitle={'Update Cart'}
+                                sTitle={'Reload Data'}
                                 nWidth={120}
                                 color={colors.default}
                                 centerText={true}
                                 action={() => reloadData()}
                             />
-                        }
-                        {
-                            !submited ? null : <Button type="clear" title="SENDING..." loading={true} style={{ marginTop: 15 }} />
-
                         }
                     </View>
                 </View>
