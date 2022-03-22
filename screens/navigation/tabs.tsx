@@ -6,6 +6,7 @@ import Product from "../product";
 import ClientList from "../client/list";
 import OrderList from "../orders/list";
 import CartList from "../orders/list";
+import Cart from "../orders/cart";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,9 +47,9 @@ const TabNavigator = () => {
             />
             <Tab.Screen
                 name="CartList"
-                component={CartList}
+                component={Cart}
                 options={{
-                    title: 'Cart',
+                    title: 'Orders',
                     headerShown: true,
                     headerStyle: {
                       backgroundColor: colors.default

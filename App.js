@@ -13,6 +13,8 @@ import Order from './screens/orders/orders';
 import TabNavigator from './screens/navigation/tabs';
 import { StatusBar } from 'react-native';
 import MessageView from './screens/message/message';
+import CartList from './screens/orders/list';
+import OrderList from './screens/orders/orders-list';
 
 const Stack = createNativeStackNavigator();
 
@@ -70,6 +72,39 @@ export default function App() {
               options={{
                 headerShown: true,
                 title: "Register Client",
+                headerStyle: {
+                  backgroundColor: colors.default
+                },
+                headerTintColor: colors.white,
+                headerTitleAlign: 'center',
+                headerTitleStyle: {
+                  fontWeight: 'bold'
+                }
+              }}
+            />
+
+<Stack.Screen
+              name="Cart"
+              component={CartList}
+              options={{
+                headerShown: true,
+                title: "Cart",
+                headerStyle: {
+                  backgroundColor: colors.default
+                },
+                headerTintColor: colors.white,
+                headerTitleAlign: 'center',
+                headerTitleStyle: {
+                  fontWeight: 'bold'
+                }
+              }}
+            />
+            <Stack.Screen
+              name="OrderList"
+              component={OrderList}
+              options={{
+                headerShown: true,
+                title: "Orders",
                 headerStyle: {
                   backgroundColor: colors.default
                 },
