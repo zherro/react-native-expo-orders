@@ -43,7 +43,10 @@ expo web
 
 ### Build for production
 
-
+```
+# publish prod version app
+expo push:android:upload
+```
 
 ### React native oficial docs
 
