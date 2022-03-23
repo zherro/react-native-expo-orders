@@ -1,6 +1,6 @@
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { getApi } from "../../src/api";
+import { catchAction, getApi } from "../../src/api";
 import ProductView from "./product";
 
 export default function Product( { navigation } ) {
@@ -8,17 +8,12 @@ export default function Product( { navigation } ) {
     const [data, setData] = useState(null);
     const [error, setError] = useState('');
 
-    const catchAction = () => {
-        setData([]);
-        setError('Unexpected error to retrive products!');
-    };
-
     const getDataAction = ( res ) => {
         if(res.ok) {
             return res.json();
         } else {
-            catchAction();
-        }        
+            catchAction(setData, setError);
+        }
     }; 
 
     const processDataAction = data => {
@@ -27,13 +22,13 @@ export default function Product( { navigation } ) {
             setError(null);
         }
     }
-    
-    const loadData = () => {
+
+    const loadData = ( route ) => {
         getApi(
-            'products',
+            route,
             getDataAction,
             processDataAction,
-            catchAction
+            catchAction(setData, setError)
         );
     }
 
@@ -42,18 +37,18 @@ export default function Product( { navigation } ) {
             `products?query=${searchText}`,
             getDataAction,
             processDataAction,
-            catchAction
+            catchAction(setData, setError)
         );
     }
 
     useEffect(() => {
-        loadData();
+        loadData('products');
     }, [])
 
     return <ProductView
                 navigation={navigation}
                 searchAction={filterData}
-                reloadData={() =>  loadData()}
+                reloadData={() =>  loadData('products')}
                 data={data}
                 error={error}
             />; 

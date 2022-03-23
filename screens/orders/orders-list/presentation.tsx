@@ -21,10 +21,10 @@ export default function OrderListView({ reloadData, data, error }) {
                             data?.map((order, i) => (
                                 <TouchableOpacity key={i} onPress={() => { }}>
                                     <FlatListItem
-                                        title={"Order Number: " + order.orderUser.id}
-                                        subtitle={"Created by: " + order.orderUser.user}
-                                        textAux1={'$ ' + order.orderUser.value}
-                                        textAux2={'Itens: ' + order.orderUser.qtd}
+                                        title={"Order Number: " + order?.orderUser?.id}
+                                        subtitle={"Created by: " + order?.orderUser?.user}
+                                        textAux1={'$ ' + order?.orderUser?.value}
+                                        textAux2={'Itens: ' + order?.orderUser?.qtd}
                                     />
                                 </TouchableOpacity>
                             ))

@@ -26,6 +26,8 @@ npm install -g expo-cli
 
 **Run expo project**
 
+> in project folder
+
 ```
 # run expo run toll
 # exposed in http://localhost:19002

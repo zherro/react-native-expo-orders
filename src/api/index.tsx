@@ -1,6 +1,6 @@
 
-// const HOST_API = 'https://orders-api-curso.herokuapp.com/';
-const HOST_API = 'http://localhost:8080/';
+const HOST_API = 'https://orders-api-curso.herokuapp.com/';
+// const HOST_API = 'http://localhost:8080/';
 
 const buildUri = (uri) => {
     return `${HOST_API}${uri}`;
@@ -25,3 +25,8 @@ export function postApi(route, data, getDataAction, catchAction) {
     .then( getDataAction )
     .catch( catchAction );
 }
+
+export const catchAction = (setData, setError) => {
+    setData([]);
+    setError('Unexpected error to retrive products!');
+};
