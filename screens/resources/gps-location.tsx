@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Platform, Text, View } from "react-native";
-import Constants from 'expo-constants';
+import { Text, View } from "react-native";
 import * as Device from 'expo-device';
 import * as Location from 'expo-location';
 

@@ -8,6 +8,7 @@ import CartList from "../screens/orders/list";
 import Order from "../screens/orders/orders";
 import OrderList from "../screens/orders/orders-list";
 import ProductDetail from "../screens/productDetail";
+import CameraResource from "../screens/resources/camera";
 import GPSResource from "../screens/resources/gps-location";
 
 export function headerHide() {
@@ -31,6 +32,11 @@ export function headerCustom ( title ) {
 
 const screens = [
     
+    {
+        name: "CameraResource",
+        component: CameraResource,
+        options: headerCustom("Camera"),
+    },
     {
         name: "GPSResource",
         component: GPSResource,
