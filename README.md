@@ -71,6 +71,12 @@ npm install yup --save
 
 ## expo libs
 
+[expo-constants](https://docs.expo.dev/versions/latest/sdk/constants/)
+
+```
+expo install expo-constants
+```
+
 [expo-sqllite](https://docs.expo.dev/versions/latest/sdk/sqlite/)
 
 ```

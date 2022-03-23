@@ -7,6 +7,7 @@ import ClientList from "../client/list";
 import OrderList from "../orders/list";
 import CartList from "../orders/list";
 import Cart from "../orders/cart";
+import Resources from "../resources";
 
 const Tab = createBottomTabNavigator();
 
@@ -69,10 +70,22 @@ const TabNavigator = () => {
                     title: 'Client List',
                 }}
             />
-            {/* <Tab.Screen
+            <Tab.Screen
                 name="Resources"
-                component={Resources}
-            /> */}
+                component={Resources}                
+                options={{
+                    title: 'Resources',
+                    headerShown: true,
+                    headerStyle: {
+                      backgroundColor: colors.default
+                    },
+                    headerTintColor: colors.white,
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                      fontWeight: 'bold'
+                    }
+                  }}
+            />
         </Tab.Navigator>
     );
 }

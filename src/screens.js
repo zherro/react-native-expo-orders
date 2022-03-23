@@ -8,10 +8,13 @@ import CartList from "../screens/orders/list";
 import Order from "../screens/orders/orders";
 import OrderList from "../screens/orders/orders-list";
 import ProductDetail from "../screens/productDetail";
+import GPSResource from "../screens/resources/gps-location";
 
-const headerHide = { headerShown: false };
+export function headerHide() {
+    return { headerShown: false };
+};
 
-const headerCustom = ( title ) => {
+export function headerCustom ( title ) {
     return {
         title: title,
         headerShown: true,
@@ -27,6 +30,12 @@ const headerCustom = ( title ) => {
 };
 
 const screens = [
+    
+    {
+        name: "GPSResource",
+        component: GPSResource,
+        options: headerCustom("GPS Location"),
+    },
     {
         name: "TabNavigator",
         component: TabNavigator,
@@ -71,7 +80,8 @@ const screens = [
         name: "MessageView",
         component: MessageView,
         options: headerHide,
-    }
+    },
+    
 ];
 
 export default screens;
