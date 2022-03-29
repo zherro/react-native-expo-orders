@@ -1,6 +1,6 @@
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { catchAction, getApi } from "../../src/api";
+import { catchAction, getApi } from "../../api";
 import ProductView from "./product";
 
 export default function Product( { navigation } ) {

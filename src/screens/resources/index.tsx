@@ -11,7 +11,7 @@ export default function Resources ( { navigation } ) {
             ]}
         >
             <Button title="GPS Location" onPress={() => navigation.navigate('GPSResource') } />
-            <Button title="GPS Location" onPress={() => navigation.navigate('GPSResource') } />
+            <Button title="Camera" onPress={() => navigation.navigate('CameraResource') } />
             <Button title="GPS Location" onPress={() => navigation.navigate('GPSResource') } />
         </View>
     );

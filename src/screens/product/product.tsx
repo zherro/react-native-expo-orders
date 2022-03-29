@@ -4,7 +4,7 @@ import { View, TouchableOpacity, Text } from "react-native";
 import HeaderWithSearch from "../../components/header/header-with-search";
 import CardPrice from "../../components/card/card-price";
 import flex, { metrics } from "../../components/theme/theme-style";
-import { initDB } from "../../src/database/database-connection";
+import { initDB } from "../../database/database-connection";
 
 export default function ProductView({
     navigation,

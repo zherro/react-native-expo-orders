@@ -1,21 +1,29 @@
-import { colors } from "../components/theme/theme-style";
-import ClientDetail from "../screens/client/detail";
-import ClientForm from "../screens/client/form";
-import Login from "../screens/login";
-import MessageView from "../screens/message/message";
-import TabNavigator from "../screens/navigation/tabs";
-import CartList from "../screens/orders/list";
-import Order from "../screens/orders/orders";
-import OrderList from "../screens/orders/orders-list";
-import ProductDetail from "../screens/productDetail";
-import CameraResource from "../screens/resources/camera";
-import GPSResource from "../screens/resources/gps-location";
+
+import { colors } from "./components/theme/theme-style";
+import ClientDetail from "./screens/client/detail";
+import ClientForm from "./screens/client/form";
+import ClientList from "./screens/client/list";
+import Login from "./screens/login";
+import MessageView from "./screens/message/message";
+import TabNavigator from "./screens/navigation/tabs";
+import Cart from "./screens/orders/cart";
+import CartList from "./screens/orders/list";
+import Order from "./screens/orders/orders";
+import OrderList from "./screens/orders/orders-list";
+import Product from "./screens/product";
+import ProductDetail from "./screens/product-detail";
+import Resources from "./screens/resources";
+import CameraResource from "./screens/resources/camera";
+import GPSResource from "./screens/resources/gps-location";
 
 export function headerHide() {
     return { headerShown: false };
 };
+export function headerHideWithTitle(title) {
+    return { headerShown: false, title: title };
+};
 
-export function headerCustom ( title ) {
+export function headerCustom(title) {
     return {
         title: title,
         headerShown: true,
@@ -30,18 +38,33 @@ export function headerCustom ( title ) {
     };
 };
 
+export function tabScreens() {
+    return [
+        {
+            name: "Product",
+            component: Product,
+            options: headerCustom(),
+        },
+        {
+            name: "CartList",
+            component: Cart,
+            options: headerCustom("Orders"),
+        },
+        {
+            name: "ClientList",
+            component: ClientList,
+            options: headerHideWithTitle("Client List"),
+        },
+        {
+            name: "Resources",
+            component: Resources,
+            options: headerCustom("Resources"),
+
+        }
+    ];
+}
+
 const screens = [
-    
-    {
-        name: "CameraResource",
-        component: CameraResource,
-        options: headerCustom("Camera"),
-    },
-    {
-        name: "GPSResource",
-        component: GPSResource,
-        options: headerCustom("GPS Location"),
-    },
     {
         name: "TabNavigator",
         component: TabNavigator,
@@ -87,7 +110,17 @@ const screens = [
         component: MessageView,
         options: headerHide,
     },
-    
+    {
+        name: "CameraResource",
+        component: CameraResource,
+        options: headerCustom("Camera"),
+    },
+    {
+        name: "GPSResource",
+        component: GPSResource,
+        options: headerCustom("GPS Location"),
+    },
+
 ];
 
 export default screens;

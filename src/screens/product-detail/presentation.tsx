@@ -1,37 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Button } from "react-native-elements";
-import TextCenter from "../components/text/text-center";
-import flex, { color, colors, metrics, text } from "../components/theme/theme-style";
-import { addToCart, countCartItem } from "../src/database/order-repository";
+import flex, { color, metrics, text } from "../../components/theme/theme-style";
 
-export default function ProductDetail({ navigation, route }) {
-
-    const { product } = route.params;
-
-    const [submited, setSubmited] = useState(false);
-    const [error, setError] = useState(null);
-    const [added, addCallback] = useState({state: false, qtd: null});
-
-    const addProductToCart = () => {
-        setSubmited(true);
-        addToCart(product, addCallback);
-    }
-
-   useEffect(() => {
-        if (added?.state) {
-            setSubmited(false);
-            setError(null);
-            console.log('count item retrieve:' + added?.qtd)
-        } else {
-            setError('Unexpected result when attempt add item to cart! Sorry!!!');
-        }
-    }, [added]);
-
-    useEffect(() => {
-        countCartItem(product.id, addCallback);
-        navigation.setOptions({ title: product.title });
-    }, [product]);
+export default function ProductDetailView({
+    product,
+    added,
+    addProductToCart,
+    submited
+}) {
 
     return (
         <View>

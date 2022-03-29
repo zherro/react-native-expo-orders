@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { catchAction, getApi, postApi } from "../../../src/api";
-import { clearCart, listCart } from "../../../src/database/order-repository";
+import { catchAction, getApi, postApi } from "../../../api";
+import { clearCart, listCart } from "../../../database/order-repository";
 import OrderListView from "./presentation";
 
 export default function OrderList( { navigation } ) {

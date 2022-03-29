@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { postApi } from "../../../src/api";
-import { clearCart, listCart } from "../../../src/database/order-repository";
+import { postApi } from "../../../api";
+import { clearCart, listCart } from "../../../database/order-repository";
 import CarrListView from "./presentation";
 
 export default function CartList( { navigation } ) {
